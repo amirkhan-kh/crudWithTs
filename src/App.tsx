@@ -16,10 +16,13 @@ const App: FC = () => {
   const [loading, setLoading] = useState<boolean>(true);
   const [employees, setEmployees] = useState<IEmployes[]>([]);
   const [auto, setAuto] = useState(false);
+  console.log(setAuto);
+  
   const [percent, setPercent] = useState(-50);
   const timerRef = useRef<ReturnType<typeof setTimeout>>(null);
   const { handleAddEmployee, loadingg } = useEmployeeActions();
-
+  console.log(loadingg);
+  
   // Create employee uchun
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
@@ -69,7 +72,7 @@ const App: FC = () => {
   const handleSaveUpdate = async () => {
     if (editEmployee) {
       try {
-        const updated = await updateEmploye("employee", editEmployee.id, editEmployee);
+        const updated = await updateEmploye("employee", editEmployee.id || "", editEmployee);
         setEmployees((prev) =>
           prev.map((emp) => (emp.id === editEmployee.id ? updated : emp))
         );

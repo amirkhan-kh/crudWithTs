@@ -46,7 +46,7 @@ const EmployeeList: FC<Props> = ({ employees, onUpdate, onDelete }) => {
             <Button
               color="danger"
               variant="outlined"
-              onClick={() => onDelete(item.id)}
+              onClick={() => onDelete(item.id!)}
             >
               Delete
             </Button>

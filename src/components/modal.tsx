@@ -23,9 +23,9 @@ const EmployeeFormModal: FC<Props> = ({
   setUsername,
   email,
   setEmail,
-  birthDate,
   setBirthDate,
 }) => {
+
   return (
     <Modal className=""
       title={loading ? "Loading..." : "Create New Employee"}
@@ -49,7 +49,12 @@ const EmployeeFormModal: FC<Props> = ({
           onChange={(e) => setEmail(e.target.value)}
         />
         <DatePicker
-          onChange={(date, dateString) => setBirthDate(dateString)}
+          onChange={(_, dateString) => {
+            if (typeof dateString === "string") {
+              setBirthDate(dateString);
+            }
+          }}
+          
         />
       </Space>
     </Modal>
